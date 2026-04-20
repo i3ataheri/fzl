@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing Section</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@300;500;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-section: #f4f4f4;
+      --card-bg: #ffffff;
+      --primary: #0292ac;
+      --text: #1a1a1a;
+      --text-secondary: #555555;
+      --border: rgba(0,0,0,0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: #ffffff;
+    }
+
+    .pricing-section {
+      width: 100%;
+      padding: 80px 5%;
+      background: var(--bg-section);
+    }
+
+    .pricing-note {
+      max-width: 900px;
+      margin: 0 auto 50px;
+      text-align: center;
+      color: var(--text-secondary);
+      line-height: 1.9;
+    }
+
+    .pricing-note strong {
+      display: block;
+      font-family: 'Cairo', sans-serif;
+      font-size: 1.9rem;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .pricing-note span {
+      display: block;
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .pricing-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+
+      display: grid;
+      grid-template-columns: repeat(3, minmax(280px, 1fr));
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .price-card {
+      position: relative;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 40px 30px;
+      text-align: center;
+
+      display: flex;
+      flex-direction: column;
+
+      transition: 0.3s ease;
+    }
+
+    .price-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary);
+    }
+
+    .price-card.featured {
+      border: 2px solid var(--primary);
+      transform: scale(1.03);
+    }
+
+    .badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      background: var(--primary);
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .price-card h2 {
+      font-family: 'Cairo', sans-serif;
+      color: var(--text);
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .price-value {
+      font-family: 'Cairo', sans-serif;
+      color: var(--primary);
+      font-size: 42px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .price-value span {
+      font-size: 18px;
+      color: var(--text-secondary);
+    }
+
+    .daily-cost {
+      display: block;
+      color: var(--primary);
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+
+    .features-list {
+      list-style: none;
+      text-align: right;
+      margin-bottom: 30px;
+      flex-grow: 1;
+    }
+
+    .features-list li {
+      position: relative;
+      padding-right: 24px;
+      margin-bottom: 14px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .features-list li::before {
+      content: "✓";
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    .btn-order {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      border: 2px solid var(--primary);
+      border-radius: 999px;
+
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: bold;
+
+      transition: 0.3s ease;
+    }
+
+    .btn-order:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    @media (max-width: 992px) {
+      .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .pricing-section {
+        padding: 60px 20px;
+      }
+
+      .pricing-note strong {
+        font-size: 1.5rem;
+      }
+
+      .pricing-note span {
+        font-size: 0.95rem;
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .price-card.featured {
+        transform: none;
+      }
+    }
+
+    .floating-btn {
+      position: fixed;
+      bottom: 22px;
+      width: 56px;
+      height: 56px;
+      border: none;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .floating-btn svg {
+      width: 26px;
+      height: 26px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .home-btn {
+      right: 22px;
+    }
+
+    .menu-btn {
+      left: 22px;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="pricing-section">
+
+    <div class="pricing-note">
+      <strong>هذه نماذج توضيحية لباقاتنا</strong>
+      <span>ويمكننا تخصيص التصميم والمميزات بالكامل</span>
+      <strong>بما يناسب مطعمك واحتياجك</strong>
+    </div>
+
+    <div class="pricing-grid">
+
+      <div class="price-card">
+        <h2>الباقة الاقتصادية</h2>
+        <div class="price-value">299 <span>ريال / سنة</span></div>
+        <span class="daily-cost">فقط 0.82 هللة في اليوم!</span>
+
+        <ul class="features-list">
+          <li>المنيو الرقمي (جوال، كمبيوتر، تابلت)</li>
+          <li>استضافة مجانية سنة كاملة</li>
+          <li>تحديث مرة واحدة في السنة</li>
+          <li>باركود QR للمنيو مدى الحياة</li>
+          <li>إضافة وسائل التواصل الاجتماعي</li>
+          <li>إضافة تقييم جوجل في المنيو</li>
+        </ul>
+
+        
+      </div>
+
+      <div class="price-card featured">
+        <div class="badge">الأكثر طلباً</div>
+
+        <h2>الباقة الأساسية</h2>
+        <div class="price-value">365 <span>ريال / سنة</span></div>
+        <span class="daily-cost">فقط ريال واحد في اليوم!</span>
+
+        <ul class="features-list">
+          <li>المنيو الرقمي (جوال، كمبيوتر، تابلت)</li>
+          <li>استضافة مجانية سنة كاملة</li>
+          <li>تحديث ثلاث مرات في السنة</li>
+          <li>باركود QR للمنيو مدى الحياة</li>
+          <li>باركود QR لتقييم جوجل</li>
+          <li>إضافة وسائل التواصل الاجتماعي</li>
+          <li>إضافة خريطة وجوجل ماب</li>
+          <li>إضافة تقييم جوجل في المنيو</li>
+        </ul>
+
+        
+      </div>
+
+      <div class="price-card">
+        <h2>الباقة المميزة</h2>
+        <div class="price-value">549 <span>ريال / سنة</span></div>
+        <span class="daily-cost">فقط ريال ونصف في اليوم!</span>
+
+        <ul class="features-list">
+          <li>المنيو الرقمي (جوال، كمبيوتر، تابلت)</li>
+          <li>استضافة مجانية سنة كاملة</li>
+          <li>تحديث حتى 5 مرات في السنة</li>
+          <li>ميدالية ذكية NFC مع شعار مطعمك</li>
+          <li>شريحة NFC مخصصة للمطعم</li>
+          <li>باركود QR تقييم جوجل</li>
+          <li>إضافة وسائل التواصل والواتساب</li>
+          <li>إضافة خريطة وتقييم جوجل</li>
+          <li>إضافة زر الطلب عبر الواتساب</li>
+        </ul>
+
+        
+      </div>
+
+    </div>
+  </section>
+
+  <a href="index" class="floating-btn home-btn" aria-label="الرئيسية">
+    <svg viewBox="0 0 24 24">
+      <path d="M3 10.5L12 3l9 7.5"></path>
+      <path d="M5 9.5V21h14V9.5"></path>
+      <path d="M9 21v-6h6v6"></path>
+    </svg>
+  </a>
+
+  <a href="/menu" class="floating-btn menu-btn" aria-label="القائمة">
+    <svg viewBox="0 0 24 24">
+      <line x1="4" y1="7" x2="20" y2="7"></line>
+      <line x1="4" y1="12" x2="20" y2="12"></line>
+      <line x1="4" y1="17" x2="20" y2="17"></line>
+    </svg>
+  </a>
+
+</body>
+</html>
